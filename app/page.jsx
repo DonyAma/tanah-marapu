@@ -5,8 +5,8 @@ export default function Beranda() {
   return (
     <>
       {/* HERO */}
-      <header className="relative grid min-h-[92svh] content-center bg-gradient-to-b from-pasir via-[#efe5cf] to-[#e8d6ad] px-5 py-16">
-        <div className="absolute right-[8vw] top-[14vh] aspect-square w-[min(26vw,220px)] rounded-full bg-[radial-gradient(circle_at_35%_35%,#f3c96b,#e0a93e_60%,#d28f2c)] opacity-90" />
+      <header className="relative grid content-center bg-gradient-to-b from-pasir via-[#efe5cf] to-[#e8d6ad] px-5 py-16 md:min-h-[92svh]">
+        <div className="absolute right-[6vw] top-24 aspect-square w-[clamp(90px,22vw,220px)] rounded-full bg-[radial-gradient(circle_at_35%_35%,#f3c96b,#e0a93e_60%,#d28f2c)] opacity-80 md:top-[14vh]" />
         <div className="relative z-10 mx-auto w-full max-w-6xl">
           <span className="inline-flex items-center gap-2 rounded-full border-2 border-indigo2 bg-white px-4 py-1.5 text-xs font-bold">
             ★ <b className="text-kombu">Tatler Travel</b> · 18 Destinasi Dunia 2026
