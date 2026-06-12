@@ -31,7 +31,7 @@ export default function DetailDestinasi({ params }) {
       </p>
 
       {/* hero */}
-      <div className={`relative mx-auto mt-3 flex h-[40vh] min-h-[260px] max-w-6xl items-end overflow-hidden rounded-3xl bg-gradient-to-br p-7 ${d.gradien}`}>
+      <div className={`relative mx-auto mt-3 flex h-[32vh] min-h-[230px] md:h-[40vh] max-w-6xl items-end overflow-hidden rounded-3xl bg-gradient-to-br p-7 ${d.gradien}`}>
         {d.foto && (
           <img src={d.foto} alt={d.nama}
             className="absolute inset-0 h-full w-full object-cover" />
