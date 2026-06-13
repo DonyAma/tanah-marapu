@@ -25,15 +25,45 @@ const sourceSerif = Source_Serif_4({
   display: "swap",
 });
 
+const BASE_URL = "https://jelajahsumba.id";
+
 export const metadata = {
-  metadataBase: new URL("https://tanahmarapu.example.com"),
+  metadataBase: new URL(BASE_URL),
   title: {
-    default: "Tanah Marapu — Panduan Wisata Pulau Sumba, NTT",
-    template: "%s | Tanah Marapu",
+    default: "Jelajah Sumba — Panduan Wisata Pulau Sumba, NTT",
+    template: "%s | Jelajah Sumba",
   },
   description:
-    "Panduan wisata Sumba terlengkap: destinasi klasik & hidden gem terbaru, Pasola, tenun ikat, itinerary, homestay dan guide lokal.",
-  openGraph: { type: "website", locale: "id_ID" },
+    "Panduan wisata Sumba terlengkap: destinasi klasik & hidden gem terbaru, tradisi Pasola, tenun ikat, itinerary 5 hari, homestay dan guide lokal terpercaya.",
+  keywords: ["wisata sumba", "destinasi sumba", "panduan sumba", "pasola", "tenun ikat sumba", "ntt"],
+  authors: [{ name: "Tim Jelajah Sumba" }],
+  creator: "Jelajah Sumba",
+  openGraph: {
+    type: "website",
+    locale: "id_ID",
+    url: BASE_URL,
+    siteName: "Jelajah Sumba",
+    title: "Jelajah Sumba — Panduan Wisata Pulau Sumba, NTT",
+    description:
+      "Panduan wisata Sumba terlengkap: destinasi, itinerary, homestay dan guide lokal.",
+    images: [
+      {
+        url: "/kuda-sumba-full.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Kuda Sumba — Jelajah Sumba",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Jelajah Sumba — Panduan Wisata Pulau Sumba",
+    description: "Destinasi, itinerary, homestay dan guide lokal Sumba.",
+    images: ["/kuda-sumba-full.jpg"],
+  },
+  alternates: {
+    canonical: BASE_URL,
+  },
   icons: {
     icon: "/favicon.ico",
     apple: "/kuda-sumba-nav.jpg",
@@ -45,7 +75,7 @@ export default function RootLayout({ children }) {
     <html lang="id" className={`${bricolage.variable} ${jakarta.variable} ${sourceSerif.variable}`}>
       <body>
         <Nav />
-        <main className="">{children}</main>
+        <main>{children}</main>
         <Footer />
       </body>
     </html>

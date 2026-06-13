@@ -1,6 +1,12 @@
 export const metadata = {
-  title: "Tentang Kami",
-  description: "Tanah Marapu — panduan independen wisata Pulau Sumba yang menghubungkan wisatawan langsung dengan warga lokal.",
+  title: "Tentang Kami — Panduan Independen Wisata Sumba",
+  description:
+    "Jelajah Sumba adalah panduan wisata independen Pulau Sumba yang menghubungkan wisatawan langsung dengan warga lokal. Tanpa perantara, uang langsung ke Sumba.",
+  openGraph: {
+    title: "Tentang Jelajah Sumba",
+    description: "Panduan wisata independen Sumba — menghubungkan wisatawan langsung dengan warga lokal.",
+    images: [{ url: "/kuda-sumba-full.jpg", width: 1200, height: 630, alt: "Tentang Jelajah Sumba" }],
+  },
 };
 
 export default function Tentang() {
@@ -13,7 +19,7 @@ export default function Tentang() {
         Panduan Sumba, dari hati untuk Sumba
       </h1>
       <p className="mt-5 font-serif2 text-lg italic text-[#4d463c]">
-        Tanah Marapu adalah panduan wisata independen Pulau Sumba, Nusa Tenggara Timur.
+        Jelajah Sumba adalah panduan wisata independen Pulau Sumba, Nusa Tenggara Timur.
       </p>
       <div className="mt-6 space-y-4 text-[#4d463c]">
         <p>
@@ -34,10 +40,10 @@ export default function Tentang() {
         </p>
       </div>
       <a
-        href="https://wa.me/6281319634257?text=Halo%20Tanah%20Marapu"
+        href="https://wa.me/6281319634257?text=Halo%20Jelajah%20Sumba"
         target="_blank"
         rel="noopener"
-        className="mt-8 inline-block rounded-full bg-[#1f8a4c] px-7 py-3 font-bold text-white hover:bg-[#27a25b]"
+        className="mt-8 inline-block rounded-full bg-[#1f8a4c] px-7 py-3 font-bold text-white hover:bg-[#27a25b] transition"
       >
         💬 Hubungi kami via WhatsApp
       </a>

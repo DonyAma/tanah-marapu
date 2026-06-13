@@ -11,8 +11,25 @@ export function generateMetadata({ params }) {
   const d = destinasi.find((x) => x.slug === params.slug);
   if (!d) return {};
   return {
-    title: `${d.nama} — Rute, Tiket & Tips | Tanah Marapu`,
+    title: `${d.nama} — Rute, Tiket & Tips Wisata`,
     description: d.ringkas,
+    keywords: [d.nama, d.wilayah, d.kategori, "wisata sumba", "ntt"],
+    openGraph: {
+      title: `${d.nama} — ${d.wilayah}, Sumba`,
+      description: d.ringkas,
+      images: d.foto
+        ? [{ url: d.foto, width: 1200, height: 630, alt: d.nama }]
+        : [{ url: "/kuda-sumba-full.jpg", width: 1200, height: 630, alt: d.nama }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${d.nama} — Sumba`,
+      description: d.ringkas,
+      images: d.foto ? [d.foto] : ["/kuda-sumba-full.jpg"],
+    },
+    alternates: {
+      canonical: `https://jelajahsumba.id/destinasi/${d.slug}`,
+    },
   };
 }
 
@@ -38,16 +55,14 @@ export default function DetailDestinasi({ params }) {
         </ol>
       </nav>
 
-      {/* HERO — lebih dramatis */}
+      {/* HERO */}
       <FadeIn className="mx-auto mt-4 max-w-6xl px-5">
         <div className={`relative flex h-[40vh] min-h-[260px] md:h-[52vh] items-end overflow-hidden rounded-3xl bg-gradient-to-br p-7 md:p-10 ${d.gradien}`}>
           {d.foto && (
             <img src={d.foto} alt={d.nama}
               className="absolute inset-0 h-full w-full object-cover" />
           )}
-          {/* gradient overlay lebih dramatis */}
           <div className="absolute inset-0 bg-gradient-to-t from-indigo2/80 via-indigo2/30 to-transparent" />
-          {/* top-left badge */}
           <div className="absolute top-5 left-5 md:top-7 md:left-7">
             <span className={`rounded-full px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider ${
               d.badge === "baru" ? "bg-emas text-indigo2" : "bg-pasir text-indigo2"}`}>
