@@ -11,6 +11,10 @@ export const metadata = {
   description:
     "Panduan wisata Sumba terlengkap: destinasi klasik & hidden gem terbaru, Pasola, tenun ikat, itinerary, homestay dan guide lokal.",
   openGraph: { type: "website", locale: "id_ID" },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/kuda-sumba-nav.jpg",
+  },
 };
 
 export default function RootLayout({ children }) {
@@ -25,7 +29,7 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <Nav />
-        <main className="pt-14">{children}</main>
+        <main className="pt-0 md:pt-14">{children}</main>
         <Footer />
       </body>
     </html>

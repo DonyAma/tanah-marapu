@@ -21,8 +21,9 @@ export default function Nav() {
   return (
     <nav className="fixed inset-x-0 top-0 z-50 border-b border-indigo2/10 bg-pasir/90 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3">
-        <Link href="/" className="font-display text-xl font-extrabold text-indigo2">
-          SUM<span className="text-kombu">BA</span>
+        <Link href="/" className="flex items-center gap-1 font-display text-sm md:text-xl font-extrabold text-indigo2">
+          <img src="/kuda-sumba-nav.jpg" alt="Tanah Marapu" className="h-8 w-8 md:h-10 md:w-10 rounded-full object-cover shadow-sm shrink-0" />
+          <span className="whitespace-nowrap">SUM<span className="text-kombu">BA</span></span>
         </Link>
 
         {/* menu desktop */}

@@ -31,7 +31,7 @@ export default function DetailDestinasi({ params }) {
       </p>
 
       {/* hero */}
-      <div className={`relative mx-auto mt-3 flex h-[32vh] min-h-[230px] md:h-[40vh] max-w-6xl items-end overflow-hidden rounded-3xl bg-gradient-to-br p-7 ${d.gradien}`}>
+      <div className={`relative mx-auto mt-3 flex h-[32vh] min-h-[200px] md:h-[40vh] max-w-6xl items-end overflow-hidden rounded-3xl bg-gradient-to-br p-7 ${d.gradien}`}>
         {d.foto && (
           <img src={d.foto} alt={d.nama}
             className="absolute inset-0 h-full w-full object-cover" />
@@ -49,7 +49,7 @@ export default function DetailDestinasi({ params }) {
         </div>
       </div>
 
-      <div className="mx-auto grid max-w-6xl gap-9 px-5 py-10 lg:grid-cols-[1.6fr_.9fr]">
+      <div className="mx-auto grid max-w-6xl gap-6 md:gap-9 px-5 py-10 lg:grid-cols-[1.6fr_.9fr]">
         <article>
           <h2 className="font-display text-2xl font-bold text-indigo2">Kenapa harus ke sini</h2>
           <p className="mt-2 text-[#4d463c]">{d.deskripsi}</p>

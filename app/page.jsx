@@ -5,20 +5,35 @@ export default function Beranda() {
   return (
     <>
       {/* HERO */}
-      <header className="relative grid content-center bg-gradient-to-b from-pasir via-[#efe5cf] to-[#e8d6ad] px-5 py-16 md:min-h-[92svh]">
-        <div className="absolute right-[6vw] top-24 aspect-square w-[clamp(90px,22vw,220px)] rounded-full bg-[radial-gradient(circle_at_35%_35%,#f3c96b,#e0a93e_60%,#d28f2c)] opacity-80 md:top-[14vh]" />
-        <div className="relative z-10 mx-auto w-full max-w-6xl">
+      <header className="relative bg-gradient-to-b from-pasir via-[#efe5cf] to-[#e8d6ad] px-5 pt-24 pb-14 md:grid md:min-h-[92svh] md:content-center md:py-16">
+
+        {/* Gambar kuda — mobile: center atas, desktop: absolute kanan */}
+        <img
+          src="/kuda-sumba-full.jpg"
+          alt="Kuda Sumba"
+          loading="eager"
+          className="
+            mx-auto mb-6 block
+            h-44 w-44 rounded-full object-cover shadow-xl ring-4 ring-white/60
+            md:absolute md:right-[8vw] md:top-1/2 md:-translate-y-1/2
+            md:mx-0 md:mb-0 md:h-[min(28vw,320px)] md:w-[min(28vw,320px)]
+            md:ring-8
+          "
+        />
+
+        {/* Teks */}
+        <div className="relative z-10 mx-auto w-full max-w-6xl text-center md:text-left">
           <span className="inline-flex items-center gap-2 rounded-full border-2 border-indigo2 bg-white px-4 py-1.5 text-xs font-bold">
             ★ <b className="text-kombu">Tatler Travel</b> · 18 Destinasi Dunia 2026
           </span>
-          <h1 className="mt-6 font-display text-[clamp(3rem,11vw,8rem)] font-extrabold uppercase leading-[1.02] text-indigo2">
+          <h1 className="mt-4 font-display text-[clamp(3.2rem,13vw,8rem)] font-extrabold uppercase leading-[1.02] text-indigo2">
             Tanah<span className="block text-kombu">Marapu</span>
           </h1>
-          <p className="mt-4 max-w-xl font-serif2 text-lg italic text-[#4a4338]">
+          <p className="mx-auto mt-4 max-w-sm font-serif2 text-base italic text-[#4a4338] md:mx-0 md:max-w-xl md:text-lg">
             Sabana emas, bukit berlapis warna tanah, kampung megalitik, dan tradisi
             Pasola berusia ratusan tahun — selamat datang di Sumba.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-8 flex flex-wrap justify-center gap-3 md:justify-start">
             <Link href="/destinasi" className="rounded-full bg-kombu px-7 py-3 text-sm font-bold text-pasir hover:bg-[#b04636]">
               Jelajahi Destinasi
             </Link>
