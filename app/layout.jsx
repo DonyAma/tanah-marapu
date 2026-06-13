@@ -1,9 +1,32 @@
 import "./globals.css";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
+import { Bricolage_Grotesque, Plus_Jakarta_Sans, Source_Serif_4 } from "next/font/google";
+
+const bricolage = Bricolage_Grotesque({
+  subsets: ["latin"],
+  weight: ["400", "700", "800"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-body",
+  display: "swap",
+});
+
+const sourceSerif = Source_Serif_4({
+  subsets: ["latin"],
+  weight: ["400"],
+  style: ["italic"],
+  variable: "--font-serif2",
+  display: "swap",
+});
 
 export const metadata = {
-  metadataBase: new URL("https://tanahmarapu.example.com"), // ganti domain asli
+  metadataBase: new URL("https://tanahmarapu.example.com"),
   title: {
     default: "Tanah Marapu — Panduan Wisata Pulau Sumba, NTT",
     template: "%s | Tanah Marapu",
@@ -19,14 +42,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="id">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Source+Serif+4:ital,opsz,wght@1,8..60,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html lang="id" className={`${bricolage.variable} ${jakarta.variable} ${sourceSerif.variable}`}>
       <body>
         <Nav />
         <main className="pt-0 md:pt-14">{children}</main>
