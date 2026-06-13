@@ -45,7 +45,7 @@ export default function RootLayout({ children }) {
     <html lang="id" className={`${bricolage.variable} ${jakarta.variable} ${sourceSerif.variable}`}>
       <body>
         <Nav />
-        <main className="pt-0 md:pt-14">{children}</main>
+        <main className="">{children}</main>
         <Footer />
       </body>
     </html>
