@@ -1,6 +1,7 @@
 import "./globals.css";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
+import { ThemeProvider } from "../components/ThemeProvider";
 import { Bricolage_Grotesque, Plus_Jakarta_Sans, Source_Serif_4 } from "next/font/google";
 
 const bricolage = Bricolage_Grotesque({
@@ -44,16 +45,8 @@ export const metadata = {
     url: BASE_URL,
     siteName: "Jelajah Sumba",
     title: "Jelajah Sumba — Panduan Wisata Pulau Sumba, NTT",
-    description:
-      "Panduan wisata Sumba terlengkap: destinasi, itinerary, homestay dan guide lokal.",
-    images: [
-      {
-        url: "/kuda-sumba-full.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Kuda Sumba — Jelajah Sumba",
-      },
-    ],
+    description: "Panduan wisata Sumba terlengkap: destinasi, itinerary, homestay dan guide lokal.",
+    images: [{ url: "/kuda-sumba-full.jpg", width: 1200, height: 630, alt: "Kuda Sumba — Jelajah Sumba" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -61,22 +54,19 @@ export const metadata = {
     description: "Destinasi, itinerary, homestay dan guide lokal Sumba.",
     images: ["/kuda-sumba-full.jpg"],
   },
-  alternates: {
-    canonical: BASE_URL,
-  },
-  icons: {
-    icon: "/favicon.ico",
-    apple: "/kuda-sumba-nav.jpg",
-  },
+  alternates: { canonical: BASE_URL },
+  icons: { icon: "/favicon.ico", apple: "/kuda-sumba-nav.jpg" },
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="id" className={`${bricolage.variable} ${jakarta.variable} ${sourceSerif.variable}`}>
+    <html lang="id" className={`${bricolage.variable} ${jakarta.variable} ${sourceSerif.variable}`} suppressHydrationWarning>
       <body>
-        <Nav />
-        <main>{children}</main>
-        <Footer />
+        <ThemeProvider>
+          <Nav />
+          <main>{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Nav height ── */
 :root {
   --nav-h: 56px;
 }
@@ -12,12 +13,99 @@
   }
 }
 
+/* ── Light mode (default) ── */
+:root {
+  --bg: #f5efe4;
+  /* pasir */
+  --bg-card: #ffffff;
+  --bg-sub: #ede5d8;
+  --text: #26221c;
+  --text-muted: #4d463c;
+  --text-faint: #8a8273;
+  --border: rgba(29, 36, 64, 0.12);
+  --nav-bg: rgba(245, 239, 228, 0.92);
+}
+
+/* ── Dark mode ── */
+html.dark {
+  --bg: #1a1612;
+  --bg-card: #252019;
+  --bg-sub: #2e2820;
+  --text: #f0e8da;
+  --text-muted: #c4b8a8;
+  --text-faint: #8a7e70;
+  --border: rgba(240, 232, 218, 0.10);
+  --nav-bg: rgba(26, 22, 18, 0.92);
+}
+
+/* ── Apply ke elemen dasar ── */
 body {
-  @apply bg-pasir text-[#26221c] font-body;
+  @apply font-body;
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 main {
   padding-top: var(--nav-h);
+}
+
+/* ── Dark override untuk class Tailwind yang sering dipakai ── */
+html.dark .bg-white {
+  background-color: var(--bg-card) !important;
+}
+
+html.dark .bg-pasir {
+  background-color: var(--bg) !important;
+}
+
+html.dark .border-indigo2\/15 {
+  border-color: var(--border) !important;
+}
+
+html.dark .text-\[\#4d463c\],
+html.dark .text-\[\#4a4338\],
+html.dark .text-\[\#5a5347\] {
+  color: var(--text-muted) !important;
+}
+
+html.dark .text-\[\#8a8273\] {
+  color: var(--text-faint) !important;
+}
+
+html.dark .text-\[\#26221c\] {
+  color: var(--text) !important;
+}
+
+/* Card border di dark mode */
+html.dark .rounded-2xl.border,
+html.dark .rounded-xl.border {
+  border-color: var(--border) !important;
+}
+
+/* Nav background */
+html.dark nav.fixed {
+  background-color: var(--nav-bg) !important;
+}
+
+/* Hero gradient dark */
+html.dark .from-pasir {
+  --tw-gradient-from: #1a1612 !important;
+}
+
+html.dark .via-\[\#efe5cf\] {
+  --tw-gradient-via: #231e17 !important;
+}
+
+html.dark .to-\[\#e8d6ad\] {
+  --tw-gradient-to: #2e2820 !important;
+}
+
+/* Input dark */
+html.dark input[type="search"] {
+  background-color: var(--bg-card);
+  color: var(--text);
+  border-color: var(--border);
 }
 
 .ikat {
