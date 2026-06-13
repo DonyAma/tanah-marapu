@@ -2,6 +2,7 @@ import "./globals.css";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import { ThemeProvider } from "../components/ThemeProvider";
+import BackToTop from "../components/BackToTop";
 import { Bricolage_Grotesque, Plus_Jakarta_Sans, Source_Serif_4 } from "next/font/google";
 
 const bricolage = Bricolage_Grotesque({
@@ -65,6 +66,7 @@ export default function RootLayout({ children }) {
         <ThemeProvider>
           <Nav />
           <main>{children}</main>
+          <BackToTop />
           <Footer />
         </ThemeProvider>
       </body>
