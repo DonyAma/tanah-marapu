@@ -11,6 +11,7 @@ module.exports = {
         kombu: "#9a3b2e",
         lumut: "#5c6b4a",
         emas: "#e0a93e",
+        nila: "#2d3b4f",
       },
       fontFamily: {
         display: ["var(--font-display)", "sans-serif"],
