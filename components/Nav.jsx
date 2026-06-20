@@ -7,8 +7,8 @@ import { useTheme } from "./ThemeProvider";
 const WILAYAH = ["Sumba Barat Daya", "Sumba Barat", "Sumba Tengah", "Sumba Timur"];
 
 const NAV_LINKS = [
-  { href: "/destinasi", label: "Destinasi", dropdown: true },
-  { href: "/blog/itinerary-sumba-5-hari", label: "Blog" },
+  { href: "/destinasi", label: "Destinasi", dropdown: "destinasi" },
+  { href: "/budaya", label: "Budaya", dropdown: "budaya" },
   { href: "/stay", label: "Stay & Guide" },
   { href: "/tentang", label: "Tentang" },
 ];
@@ -30,7 +30,11 @@ export default function Nav() {
 
   function isActive(href) {
     if (href === "/destinasi") return pathname === "/destinasi" || pathname.startsWith("/destinasi/");
-    if (href === "/blog/itinerary-sumba-5-hari") return pathname.startsWith("/blog");
+    if (href === "/budaya") {
+      return ["/budaya", "/pengrajin", "/pemandu", "/glosarium"].some(
+        (p) => pathname === p || pathname.startsWith(p + "/")
+      );
+    }
     return pathname === href || pathname.startsWith(href + "/");
   }
 
@@ -61,7 +65,7 @@ export default function Nav() {
         {/* MENU DESKTOP */}
         <ul className="hidden items-center gap-6 text-sm font-semibold md:flex dark:text-[#f0e8da]">
           {NAV_LINKS.map(({ href, label, dropdown }) =>
-            dropdown ? (
+            dropdown === "destinasi" ? (
               <li key={href} className="group relative">
                 <Link href={href} className={`cursor-pointer ${desktopLinkClass(href)}`}>
                   {label} ▾
@@ -76,6 +80,26 @@ export default function Nav() {
                       {w}
                     </Link>
                   ))}
+                </div>
+              </li>
+            ) : dropdown === "budaya" ? (
+              <li key={href} className="group relative">
+                <Link href={href} className={`cursor-pointer ${desktopLinkClass(href)}`}>
+                  {label} ▾
+                </Link>
+                <div className="invisible absolute left-0 top-full w-56 rounded-xl border border-indigo2/10 bg-white py-2 opacity-0 shadow-lg transition group-hover:visible group-hover:opacity-100 dark:bg-[#252019] dark:border-white/10">
+                  <Link href="/budaya" className="block px-4 py-2 text-sm hover:bg-pasir hover:text-kombu dark:hover:bg-[#2e2820]">
+                    Artikel Budaya & Marapu
+                  </Link>
+                  <Link href="/pengrajin" className="block px-4 py-2 text-sm hover:bg-pasir hover:text-kombu dark:hover:bg-[#2e2820]">
+                    Pengrajin Lokal
+                  </Link>
+                  <Link href="/pemandu" className="block px-4 py-2 text-sm hover:bg-pasir hover:text-kombu dark:hover:bg-[#2e2820]">
+                    Pemandu Lokal
+                  </Link>
+                  <Link href="/glosarium" className="block px-4 py-2 text-sm hover:bg-pasir hover:text-kombu dark:hover:bg-[#2e2820]">
+                    Glosarium Istilah
+                  </Link>
                 </div>
               </li>
             ) : (
@@ -98,7 +122,6 @@ export default function Nav() {
             />
           </form>
 
-          {/* DARK MODE TOGGLE */}
           <button
             onClick={toggle}
             aria-label="Toggle dark mode"
@@ -156,12 +179,37 @@ export default function Nav() {
                 </Link>
               </li>
             ))}
-            <li><Link href="/blog/itinerary-sumba-5-hari" onClick={() => setBuka(false)} className={mobileLinkClass("/blog/itinerary-sumba-5-hari")}>Blog</Link></li>
-            <li><Link href="/stay" onClick={() => setBuka(false)} className={mobileLinkClass("/stay")}>Stay & Guide</Link></li>
+
+            <li className="pt-2 border-t border-indigo2/10 dark:border-white/10">
+              <Link href="/budaya" onClick={() => setBuka(false)} className={mobileLinkClass("/budaya")}>
+                Artikel Budaya & Marapu
+              </Link>
+            </li>
+            <li className="ml-3">
+              <Link href="/pengrajin" onClick={() => setBuka(false)}
+                className={`text-xs transition ${isActive("/pengrajin") ? "text-kombu font-bold" : "text-[#5a5347] hover:text-kombu dark:text-[#8a7e70]"}`}>
+                Pengrajin Lokal
+              </Link>
+            </li>
+            <li className="ml-3">
+              <Link href="/pemandu" onClick={() => setBuka(false)}
+                className={`text-xs transition ${isActive("/pemandu") ? "text-kombu font-bold" : "text-[#5a5347] hover:text-kombu dark:text-[#8a7e70]"}`}>
+                Pemandu Lokal
+              </Link>
+            </li>
+            <li className="ml-3">
+              <Link href="/glosarium" onClick={() => setBuka(false)}
+                className={`text-xs transition ${isActive("/glosarium") ? "text-kombu font-bold" : "text-[#5a5347] hover:text-kombu dark:text-[#8a7e70]"}`}>
+                Glosarium Istilah
+              </Link>
+            </li>
+
+            <li className="pt-2 border-t border-indigo2/10 dark:border-white/10">
+              <Link href="/stay" onClick={() => setBuka(false)} className={mobileLinkClass("/stay")}>Stay & Guide</Link>
+            </li>
             <li><Link href="/tentang" onClick={() => setBuka(false)} className={mobileLinkClass("/tentang")}>Tentang</Link></li>
           </ul>
 
-          {/* Dark toggle mobile */}
           <button onClick={toggle}
             className="mt-4 flex w-full items-center justify-between rounded-full border border-indigo2/20 px-5 py-2.5 text-sm font-semibold dark:border-white/10 dark:text-[#f0e8da]">
             <span>{dark ? "Mode Terang" : "Mode Gelap"}</span>
