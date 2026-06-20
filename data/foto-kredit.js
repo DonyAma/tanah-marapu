@@ -40,5 +40,9 @@ export const kreditFoto = {
     nama: "Reza Irawan",
     url: "https://unsplash.com/@rezairaws",
   },
+  "/destinasi/bukit-tanarara.jpg": {
+    nama: " Fadhil Abhimantra",
+    url: "https://unsplash.com/id/@fabhimantra",
+  },
   // tambahkan entry baru di sini setiap kali download foto baru dari Unsplash
 };

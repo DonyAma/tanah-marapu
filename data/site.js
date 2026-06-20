@@ -7,6 +7,7 @@ export const destinasi = [
   {
     slug: "bukit-tanarara",
     nama: "Bukit Tanarara",
+    foto: "/destinasi/bukit-tanarara.jpg",
     wilayah: "Sumba Timur",
     kategori: "Bukit & Sabana",
     badge: "baru", // baru | klasik
