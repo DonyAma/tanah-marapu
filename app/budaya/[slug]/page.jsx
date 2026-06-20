@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { getArtikelBySlug, getAllSlugs, getAllArtikel } from "../../../lib/mdx";
 import { cariIstilahTerkait } from "../../../data/glosarium";
+import { getDestinasiTerkaitBudaya } from "../../../data/budaya-related";
+import { destinasi } from "../../../data/site";
 import FadeIn from "../../../components/FadeIn";
 import DividerTenun from "../../../components/DividerTenun";
 
@@ -28,6 +30,10 @@ export default async function DetailBudaya({ params }) {
 
   const istilahTerkait = cariIstilahTerkait([artikel.title, artikel.kategori]);
   const artikelLain = getAllArtikel("budaya").filter((a) => a.slug !== params.slug).slice(0, 3);
+
+  // Destinasi yang terkait dengan artikel budaya ini
+  const slugDestinasiTerkait = getDestinasiTerkaitBudaya(params.slug);
+  const destinasiTerkait = destinasi.filter((d) => slugDestinasiTerkait.includes(d.slug));
 
   return (
     <article>
@@ -80,6 +86,29 @@ export default async function DetailBudaya({ params }) {
             "
             dangerouslySetInnerHTML={{ __html: artikel.contentHtml }}
           />
+
+          {/* === DESTINASI TERKAIT — bagian baru === */}
+          {destinasiTerkait.length > 0 && (
+            <FadeIn className="mt-10 not-prose">
+              <p className="font-sans text-[11px] font-bold uppercase tracking-[0.15em] text-kombu">
+                Lihat Langsung di Lapangan
+              </p>
+              <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                {destinasiTerkait.map((d) => (
+                  <Link key={d.slug} href={`/destinasi/${d.slug}`}
+                    className="group flex gap-3 rounded-xl border border-indigo2/15 bg-white p-3 transition hover:shadow-md dark:bg-[#252019] dark:border-white/10">
+                    <div className={`h-16 w-20 shrink-0 overflow-hidden rounded-lg bg-gradient-to-br ${d.gradien}`}>
+                      {d.foto && <img src={d.foto} alt={d.nama} loading="lazy" className="h-full w-full object-cover" />}
+                    </div>
+                    <div>
+                      <p className="font-sans font-display text-sm font-bold text-indigo2 group-hover:text-kombu dark:text-[#f0e8da]">{d.nama}</p>
+                      <p className="font-sans text-xs text-[#8a8273]">{d.wilayah} →</p>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </FadeIn>
+          )}
         </FadeIn>
 
         {/* SIDEBAR — Istilah terkait */}

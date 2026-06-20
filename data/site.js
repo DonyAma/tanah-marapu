@@ -102,6 +102,7 @@ export const destinasi = [
   {
     slug: "laguna-weekuri",
     nama: "Laguna Weekuri",
+    foto: "/destinasi/laguna-weekuri.jpg",
     wilayah: "Sumba Barat Daya",
     kategori: "Laguna",
     badge: "klasik",

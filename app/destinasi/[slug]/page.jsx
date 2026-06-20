@@ -1,7 +1,11 @@
 import Link from "next/link";
 import { destinasi } from "../../../data/site";
+import { getAllArtikel } from "../../../lib/mdx";
+import { getBudayaTerkaitDestinasi } from "../../../data/budaya-related";
+import { kreditFoto } from "../../../data/foto-kredit";
 import { FAQ, SlotIklan, BoxAffiliate } from "../../../components/Blok";
 import FadeIn from "../../../components/FadeIn";
+import PhotoCredit from "../../../components/PhotoCredit";
 
 export function generateStaticParams() {
   return destinasi.map((d) => ({ slug: d.slug }));
@@ -40,6 +44,13 @@ export default function DetailDestinasi({ params }) {
     .map((s) => destinasi.find((x) => x.slug === s))
     .filter(Boolean);
 
+  const slugBudayaTerkait = getBudayaTerkaitDestinasi(d.slug, d);
+  const semuaArtikelBudaya = slugBudayaTerkait.length ? getAllArtikel("budaya") : [];
+  const artikelBudayaTerkait = semuaArtikelBudaya.filter((a) => slugBudayaTerkait.includes(a.slug));
+
+  // Cek apakah foto destinasi ini punya data kredit fotografer
+  const kredit = d.foto ? kreditFoto[d.foto] : null;
+
   return (
     <>
       {/* BREADCRUMB */}
@@ -69,6 +80,10 @@ export default function DetailDestinasi({ params }) {
               {d.badge === "baru" ? "Baru Naik Daun" : "Klasik"}
             </span>
           </div>
+
+          {/* === KREDIT FOTO — bagian baru === */}
+          {kredit && <PhotoCredit nama={kredit.nama} urlProfil={kredit.url} />}
+
           <div className="relative z-10">
             <p className="text-xs font-bold uppercase tracking-widest text-white/75">
               {d.wilayah} · {d.kategori}
@@ -86,6 +101,24 @@ export default function DetailDestinasi({ params }) {
             <h2 className="font-display text-2xl font-bold text-indigo2">Kenapa harus ke sini</h2>
             <p className="mt-2 text-[#4d463c]">{d.deskripsi}</p>
           </FadeIn>
+
+          {artikelBudayaTerkait.length > 0 && (
+            <FadeIn delay={80}>
+              <div className="mt-6 rounded-2xl border-l-[3px] border-nila bg-[#fbf6ec] p-5 dark:bg-[#1a1612] dark:border-nila">
+                <p className="font-sans text-[11px] font-bold uppercase tracking-[0.15em] text-nila">
+                  Konteks Budaya
+                </p>
+                {artikelBudayaTerkait.map((a) => (
+                  <Link key={a.slug} href={`/budaya/${a.slug}`} className="group mt-2 block">
+                    <p className="font-display text-lg font-bold text-indigo2 group-hover:text-kombu dark:text-[#f0e8da]">
+                      {a.title} →
+                    </p>
+                    <p className="mt-1 text-sm text-[#5a5347] dark:text-[#c4b8a8]">{a.ringkasan}</p>
+                  </Link>
+                ))}
+              </div>
+            </FadeIn>
+          )}
 
           <FadeIn delay={100}>
             <h2 className="mt-8 font-display text-2xl font-bold text-indigo2">Rute & akses</h2>
