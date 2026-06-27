@@ -29,9 +29,9 @@ export default function Nav() {
   }
 
   function isActive(href) {
-    if (href === "/destinasi") return pathname === "/destinasi" || pathname.startsWith("/destinasi/");
+    if (href === "/destinasi") return pathname === "/destinasi" || pathname.startsWith("/destinasi/") || pathname === "/itinerary" || pathname === "/kalender";
     if (href === "/budaya") {
-      return ["/budaya", "/pengrajin", "/pemandu", "/glosarium"].some(
+      return ["/budaya", "/pengrajin", "/pemandu", "/glosarium", "/etika"].some(
         (p) => pathname === p || pathname.startsWith(p + "/")
       );
     }
@@ -80,6 +80,13 @@ export default function Nav() {
                       {w}
                     </Link>
                   ))}
+                  <div className="my-1 border-t border-indigo2/10 dark:border-white/10" />
+                  <Link href="/itinerary" className="block px-4 py-2 text-sm hover:bg-pasir hover:text-kombu dark:hover:bg-[#2e2820]">
+                    🗺 Itinerary Siap Pakai
+                  </Link>
+                  <Link href="/kalender" className="block px-4 py-2 text-sm hover:bg-pasir hover:text-kombu dark:hover:bg-[#2e2820]">
+                    📅 Kalender Adat
+                  </Link>
                 </div>
               </li>
             ) : dropdown === "budaya" ? (
@@ -99,6 +106,9 @@ export default function Nav() {
                   </Link>
                   <Link href="/glosarium" className="block px-4 py-2 text-sm hover:bg-pasir hover:text-kombu dark:hover:bg-[#2e2820]">
                     Glosarium Istilah
+                  </Link>
+                  <Link href="/etika" className="block px-4 py-2 text-sm hover:bg-pasir hover:text-kombu dark:hover:bg-[#2e2820]">
+                    Etika Berkunjung
                   </Link>
                 </div>
               </li>
@@ -179,6 +189,18 @@ export default function Nav() {
                 </Link>
               </li>
             ))}
+            <li className="ml-3">
+              <Link href="/itinerary" onClick={() => setBuka(false)}
+                className={`text-xs transition ${isActive("/itinerary") ? "text-kombu font-bold" : "text-[#5a5347] hover:text-kombu dark:text-[#8a7e70]"}`}>
+                🗺 Itinerary Siap Pakai
+              </Link>
+            </li>
+            <li className="ml-3">
+              <Link href="/kalender" onClick={() => setBuka(false)}
+                className={`text-xs transition ${isActive("/kalender") ? "text-kombu font-bold" : "text-[#5a5347] hover:text-kombu dark:text-[#8a7e70]"}`}>
+                📅 Kalender Adat
+              </Link>
+            </li>
 
             <li className="pt-2 border-t border-indigo2/10 dark:border-white/10">
               <Link href="/budaya" onClick={() => setBuka(false)} className={mobileLinkClass("/budaya")}>
@@ -201,6 +223,12 @@ export default function Nav() {
               <Link href="/glosarium" onClick={() => setBuka(false)}
                 className={`text-xs transition ${isActive("/glosarium") ? "text-kombu font-bold" : "text-[#5a5347] hover:text-kombu dark:text-[#8a7e70]"}`}>
                 Glosarium Istilah
+              </Link>
+            </li>
+            <li className="ml-3">
+              <Link href="/etika" onClick={() => setBuka(false)}
+                className={`text-xs transition ${isActive("/etika") ? "text-kombu font-bold" : "text-[#5a5347] hover:text-kombu dark:text-[#8a7e70]"}`}>
+                Etika Berkunjung
               </Link>
             </li>
 
