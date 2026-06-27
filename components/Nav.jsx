@@ -29,7 +29,7 @@ export default function Nav() {
   }
 
   function isActive(href) {
-    if (href === "/destinasi") return pathname === "/destinasi" || pathname.startsWith("/destinasi/") || pathname === "/itinerary" || pathname === "/kalender";
+    if (href === "/destinasi") return pathname === "/destinasi" || pathname.startsWith("/destinasi/") || pathname === "/itinerary" || pathname === "/kalender" || pathname === "/peta";
     if (href === "/budaya") {
       return ["/budaya", "/pengrajin", "/pemandu", "/glosarium", "/etika"].some(
         (p) => pathname === p || pathname.startsWith(p + "/")
@@ -86,6 +86,9 @@ export default function Nav() {
                   </Link>
                   <Link href="/kalender" className="block px-4 py-2 text-sm hover:bg-pasir hover:text-kombu dark:hover:bg-[#2e2820]">
                     📅 Kalender Adat
+                  </Link>
+                  <Link href="/peta" className="block px-4 py-2 text-sm hover:bg-pasir hover:text-kombu dark:hover:bg-[#2e2820]">
+                    📍 Peta Destinasi
                   </Link>
                 </div>
               </li>
@@ -199,6 +202,12 @@ export default function Nav() {
               <Link href="/kalender" onClick={() => setBuka(false)}
                 className={`text-xs transition ${isActive("/kalender") ? "text-kombu font-bold" : "text-[#5a5347] hover:text-kombu dark:text-[#8a7e70]"}`}>
                 📅 Kalender Adat
+              </Link>
+            </li>
+            <li className="ml-3">
+              <Link href="/peta" onClick={() => setBuka(false)}
+                className={`text-xs transition ${isActive("/peta") ? "text-kombu font-bold" : "text-[#5a5347] hover:text-kombu dark:text-[#8a7e70]"}`}>
+                📍 Peta Destinasi
               </Link>
             </li>
 
