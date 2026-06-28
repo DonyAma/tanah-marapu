@@ -10,7 +10,8 @@ const NAV_LINKS = [
   { href: "/destinasi", label: "Destinasi", dropdown: "destinasi" },
   { href: "/budaya", label: "Budaya", dropdown: "budaya" },
   { href: "/stay", label: "Stay & Guide" },
-  { href: "/tentang", label: "Tentang" },
+  { href: "/tentang-sumba", label: "Tentang Sumba" },
+  { href: "/tentang", label: "Tentang Kami" },
 ];
 
 export default function Nav() {
@@ -244,7 +245,8 @@ export default function Nav() {
             <li className="pt-2 border-t border-indigo2/10 dark:border-white/10">
               <Link href="/stay" onClick={() => setBuka(false)} className={mobileLinkClass("/stay")}>Stay & Guide</Link>
             </li>
-            <li><Link href="/tentang" onClick={() => setBuka(false)} className={mobileLinkClass("/tentang")}>Tentang</Link></li>
+            <li><Link href="/tentang-sumba" onClick={() => setBuka(false)} className={mobileLinkClass("/tentang-sumba")}>Tentang Sumba</Link></li>
+            <li><Link href="/tentang" onClick={() => setBuka(false)} className={mobileLinkClass("/tentang")}>Tentang Kami</Link></li>
           </ul>
 
           <button onClick={toggle}
