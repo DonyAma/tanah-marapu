@@ -1,26 +1,27 @@
-// Pemetaan destinasi <-> artikel budaya terkait
-// Dipakai untuk hubungkan halaman destinasi dengan ensiklopedia budaya, dan sebaliknya.
-//
-// Cara pakai: tambahkan field "terkaitBudaya": ["slug-artikel"] di object destinasi
-// di data/site.js, ATAU gunakan mapping manual di bawah ini sebagai fallback
-// jika field tersebut belum diisi di site.js.
-
 export const destinasiKeBudaya = {
+  // Kampung adat → Filosofi Marapu + Rumah Adat
   "kampung-ratenggaro": ["filosofi-marapu", "rumah-adat-kubur-megalitik"],
   "kampung-praijing": ["filosofi-marapu", "rumah-adat-kubur-megalitik"],
-  // Pasola digelar di beberapa kampung Sumba Barat/Barat Daya — sesuaikan
-  // dengan slug destinasi yang relevan di data/site.js kamu, contoh:
-  // "pantai-mandorak": ["pasola-ritual-perang-tombak"],
+
+  // Bukit sabana → Tenun Ikat (konteks alam Sumba)
+  "bukit-tanarara": ["tenun-ikat-filosofi-motif"],
+  "bukit-wairinding": ["tenun-ikat-filosofi-motif"],
+
+  // Pantai → Etika Berkunjung
+  "pantai-walakiri": ["etika-berkunjung-sumba"],
+  "pantai-mandorak": ["etika-berkunjung-sumba"],
+  "laguna-weekuri": ["etika-berkunjung-sumba"],
+
+  // Padang savana → Pasola (kuda & tradisi)
+  "puru-kambera": ["pasola-ritual-perang-tombak"],
 };
 
 export function getBudayaTerkaitDestinasi(slug, dataDestinasi) {
-  // Prioritas: field di data destinasi itu sendiri, fallback ke mapping manual
   const fromField = dataDestinasi?.terkaitBudaya;
   if (fromField && fromField.length) return fromField;
   return destinasiKeBudaya[slug] || [];
 }
 
-// Kebalikannya: dari artikel budaya, cari destinasi mana saja yang terkait
 export function getDestinasiTerkaitBudaya(slugArtikel) {
   return Object.entries(destinasiKeBudaya)
     .filter(([, artikelList]) => artikelList.includes(slugArtikel))
