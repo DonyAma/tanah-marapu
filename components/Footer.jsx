@@ -1,62 +1,118 @@
 import Link from "next/link";
+import DividerTenun from "./DividerTenun";
 
 export default function Footer() {
+  const tahun = new Date().getFullYear();
+
   return (
-    <footer className="bg-indigodeep text-pasir/70">
-      <div className="ikat" />
-      <div className="mx-auto grid max-w-6xl gap-10 px-5 py-12 md:grid-cols-4">
-        <div>
-          <p className="font-display text-xl font-extrabold text-pasir">
-            SUM<span className="text-emas">BA</span>
-          </p>
-          <p className="mt-3 text-sm">
-            Tanah Marapu — panduan independen wisata Pulau Sumba, NTT. Dibuat untuk
-            menghubungkan wisatawan langsung dengan warga lokal.
-          </p>
-          <div className="mt-4 flex gap-3 text-sm font-semibold">
-            <a href="#" className="hover:text-emas">Instagram</a>
-            <a href="#" className="hover:text-emas">TikTok</a>
-            <a href="#" className="hover:text-emas">YouTube</a>
+    <footer className="mt-10">
+      <DividerTenun />
+      <div className="bg-indigo2 text-pasir">
+        <div className="mx-auto max-w-6xl px-5 py-12">
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+
+            {/* KOLOM 1 — Brand */}
+            <div>
+              <Link href="/" className="flex items-center gap-2 font-display text-xl font-extrabold text-pasir">
+  <img src="/kuda-sumba-nav.jpg" alt="Jelajah Sumba"
+    className="h-9 w-9 rounded-full object-cover" />
+  <span>SUM<span className="text-emas">BA</span></span>
+</Link>
+              <p className="mt-3 text-sm leading-relaxed text-pasir/70">
+                Ensiklopedia digital budaya dan panduan wisata Pulau Sumba, NTT.
+                Non-profit, gratis, uang langsung ke warga Sumba.
+              </p>
+              <a href="https://wa.me/6281319634257?text=Halo%20Jelajah%20Sumba"
+                target="_blank" rel="noopener"
+                className="mt-4 inline-flex items-center gap-2 rounded-full bg-[#1f8a4c] px-4 py-2 text-xs font-bold text-white hover:bg-[#27a25b] transition">
+                💬 Hubungi via WhatsApp
+              </a>
+            </div>
+
+            {/* KOLOM 2 — Destinasi */}
+            <div>
+              <p className="font-sans text-[11px] font-bold uppercase tracking-widest text-pasir/50 mb-4">
+                Destinasi
+              </p>
+              <ul className="space-y-2.5 text-sm">
+                {[
+                  { href: "/destinasi", label: "Semua Destinasi" },
+                  { href: "/peta", label: "📍 Peta Destinasi" },
+                  { href: "/itinerary", label: "🗺 Itinerary" },
+                  { href: "/kalender", label: "📅 Kalender Adat" },
+                  { href: "/stay", label: "🏠 Stay & Guide" },
+                ].map((item) => (
+                  <li key={item.href}>
+                    <Link href={item.href}
+                      className="text-pasir/70 hover:text-pasir transition">
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* KOLOM 3 — Budaya */}
+            <div>
+              <p className="font-sans text-[11px] font-bold uppercase tracking-widest text-pasir/50 mb-4">
+                Budaya
+              </p>
+              <ul className="space-y-2.5 text-sm">
+                {[
+                  { href: "/budaya", label: "📖 Artikel Budaya" },
+                  { href: "/pengrajin", label: "🧵 Pengrajin Lokal" },
+                  { href: "/pemandu", label: "🧭 Pemandu Lokal" },
+                  { href: "/glosarium", label: "Glosarium Istilah" },
+                  { href: "/etika", label: "Etika Berkunjung" },
+                ].map((item) => (
+                  <li key={item.href}>
+                    <Link href={item.href}
+                      className="text-pasir/70 hover:text-pasir transition">
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* KOLOM 4 — Panduan & Tentang */}
+            <div>
+              <p className="font-sans text-[11px] font-bold uppercase tracking-widest text-pasir/50 mb-4">
+                Panduan & Tentang
+              </p>
+              <ul className="space-y-2.5 text-sm">
+                {[
+                  { href: "/tentang-sumba", label: "🏝 Tentang Sumba" },
+                  { href: "/faq", label: "💡 FAQ Perjalanan" },
+                  { href: "/tentang", label: "Tentang Kami" },
+                  { href: "/kontribusi", label: "🤝 Kontribusi" },
+                ].map((item) => (
+                  <li key={item.href}>
+                    <Link href={item.href}
+                      className="text-pasir/70 hover:text-pasir transition">
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
 
-        <div>
-          <p className="mb-3 font-display font-bold text-pasir">Jelajah</p>
-          <ul className="space-y-2 text-sm">
-            <li><Link href="/destinasi" className="hover:text-emas">Semua Destinasi</Link></li>
-            <li><Link href="/blog/itinerary-sumba-5-hari" className="hover:text-emas">Itinerary & Blog</Link></li>
-            <li><Link href="/stay" className="hover:text-emas">Homestay & Guide</Link></li>
-          </ul>
-        </div>
-
-        <div>
-          <p className="mb-3 font-display font-bold text-pasir">Tentang</p>
-          <ul className="space-y-2 text-sm">
-            <li><Link href="/tentang" className="hover:text-emas">Tentang Kami</Link></li>
-            <li><a href="#" className="hover:text-emas">Daftarkan Usahamu</a></li>
-            <li><a href="#" className="hover:text-emas">Kredit Fotografer</a></li>
-            <li><a href="#" className="hover:text-emas">Kebijakan Privasi</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <p className="mb-3 font-display font-bold text-pasir">Itinerary gratis 📩</p>
-          <p className="text-sm">Dapatkan PDF "Itinerary Sumba 5 Hari" + tips terbaru langsung ke emailmu.</p>
-          {/* nanti dihubungkan ke Supabase / layanan email */}
-          <div className="mt-3 flex gap-2">
-            <input
-              type="email"
-              placeholder="Email kamu"
-              className="w-full rounded-full bg-pasir/10 px-4 py-2 text-sm text-pasir outline-none placeholder:text-pasir/40 focus:bg-pasir/20"
-            />
-            <button className="rounded-full bg-emas px-4 py-2 text-sm font-bold text-indigo2">
-              Kirim
-            </button>
+        {/* BOTTOM BAR */}
+        <div className="border-t border-pasir/10">
+          <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-5 py-4">
+            <p className="text-xs text-pasir/50">
+              © {tahun} Jelajah Sumba · Dibuat dengan ❤️ untuk Sumba
+            </p>
+            <p className="text-xs text-pasir/50">
+              Foto oleh fotografer lokal Sumba —{" "}
+              <Link href="/kontribusi" className="underline hover:text-pasir transition">
+                lihat kredit
+              </Link>
+            </p>
           </div>
         </div>
-      </div>
-      <div className="border-t border-pasir/10 py-5 text-center text-xs">
-        © 2026 Tanah Marapu · Foto oleh fotografer lokal Sumba (lihat kredit)
       </div>
     </footer>
   );
