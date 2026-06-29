@@ -143,9 +143,9 @@ export default function Nav() {
       </div>
 
       {/* DRAWER MOBILE */}
-      <div className={`overflow-hidden border-t border-indigo2/10 bg-pasir transition-all duration-300 md:hidden dark:border-white/5 dark:bg-[#1a1612] ${
-        buka ? "max-h-screen opacity-100" : "max-h-0 opacity-0"}`}>
-        <div className="px-5 py-4">
+      <div className={`border-t border-indigo2/10 bg-pasir transition-all duration-300 md:hidden dark:border-white/5 dark:bg-[#1a1612] ${
+        buka ? "max-h-[80vh] opacity-100 overflow-y-auto" : "max-h-0 opacity-0 overflow-hidden"}`}>
+        <div className="px-5 py-4 pb-8">
           <form onSubmit={submitCari}>
             <input type="search" value={cari} onChange={(e) => setCari(e.target.value)}
               placeholder="Cari destinasi… (tekan Enter)"
