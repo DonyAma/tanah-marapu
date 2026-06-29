@@ -1,10 +1,9 @@
-import { destinasi } from "./data/site";
-import { getAllSlugs } from "./lib/mdx";
+import { destinasi } from "../data/site";
+import { getAllSlugs } from "../lib/mdx";
 
 export default async function sitemap() {
   const BASE = "https://jelajahsumba.id";
 
-  // Route statis
   const statis = [
     "/",
     "/destinasi",
@@ -19,6 +18,8 @@ export default async function sitemap() {
     "/tentang-sumba",
     "/tentang",
     "/stay",
+    "/faq",
+    "/kontribusi",
   ].map((path) => ({
     url: `${BASE}${path}`,
     lastModified: new Date(),
@@ -26,7 +27,6 @@ export default async function sitemap() {
     priority: path === "/" ? 1 : 0.8,
   }));
 
-  // Destinasi dinamis
   const destinasiRoutes = destinasi.map((d) => ({
     url: `${BASE}/destinasi/${d.slug}`,
     lastModified: new Date(),
@@ -34,7 +34,6 @@ export default async function sitemap() {
     priority: 0.7,
   }));
 
-  // Artikel budaya dinamis
   const budayaSlugs = getAllSlugs("budaya");
   const budayaRoutes = budayaSlugs.map((slug) => ({
     url: `${BASE}/budaya/${slug}`,
@@ -43,7 +42,6 @@ export default async function sitemap() {
     priority: 0.7,
   }));
 
-  // Pengrajin dinamis
   const pengrajinSlugs = getAllSlugs("pengrajin");
   const pengrajinRoutes = pengrajinSlugs.map((slug) => ({
     url: `${BASE}/pengrajin/${slug}`,
@@ -52,9 +50,8 @@ export default async function sitemap() {
     priority: 0.6,
   }));
 
-  // Pemandu dinamis
-  const peminanduSlugs = getAllSlugs("pemandu");
-  const pemandoRoutes = peminanduSlugs.map((slug) => ({
+  const pemandoSlugs = getAllSlugs("pemandu");
+  const pemandoRoutes = pemandoSlugs.map((slug) => ({
     url: `${BASE}/pemandu/${slug}`,
     lastModified: new Date(),
     changeFrequency: "monthly",
