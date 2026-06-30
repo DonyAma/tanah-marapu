@@ -83,6 +83,8 @@ export default function Nav() {
               <div className="my-1 border-t border-indigo2/10 dark:border-white/10" />
               <Link href="/glosarium" className={dropdownLink}>Glosarium Istilah</Link>
               <Link href="/etika" className={dropdownLink}>Etika Berkunjung</Link>
+              <Link href="/kuliner" className={dropdownLink}>🍽 Kuliner Lokal</Link>
+              <Link href="/kamus" className={dropdownLink}>🗣 Kamus Bahasa</Link>
             </div>
           </li>
 
@@ -175,6 +177,8 @@ export default function Nav() {
               { href: "/pemandu", label: "🧭 Pemandu Lokal" },
               { href: "/glosarium", label: "Glosarium" },
               { href: "/etika", label: "Etika Berkunjung" },
+              { href: "/kuliner", label: "🍽 Kuliner Lokal" },
+              { href: "/kamus", label: "🗣 Kamus Bahasa" },
             ].map((item) => (
               <Link key={item.href} href={item.href} onClick={() => setBuka(false)}
                 className={`block py-1.5 text-sm ${isActive(item.href) ? "text-kombu font-bold" : "text-indigo2 dark:text-[#f0e8da]"}`}>

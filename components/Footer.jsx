@@ -14,17 +14,20 @@ export default function Footer() {
             {/* KOLOM 1 — Brand */}
             <div>
               <Link href="/" className="flex items-center gap-2 font-display text-xl font-extrabold text-pasir">
-  <img src="/kuda-sumba-nav.jpg" alt="Jelajah Sumba"
-    className="h-9 w-9 rounded-full object-cover" />
-  <span>SUM<span className="text-emas">BA</span></span>
-</Link>
+                <img src="/kuda-sumba-nav.jpg" alt="Jelajah Sumba"
+                  className="h-9 w-9 rounded-full object-cover" />
+                <span>SUM<span className="text-emas">BA</span></span>
+              </Link>
               <p className="mt-3 text-sm leading-relaxed text-pasir/70">
                 Ensiklopedia digital budaya dan panduan wisata Pulau Sumba, NTT.
                 Non-profit, gratis, uang langsung ke warga Sumba.
               </p>
-              <a href="https://wa.me/6281319634257?text=Halo%20Jelajah%20Sumba"
-                target="_blank" rel="noopener"
-                className="mt-4 inline-flex items-center gap-2 rounded-full bg-[#1f8a4c] px-4 py-2 text-xs font-bold text-white hover:bg-[#27a25b] transition">
+              <a
+                href="https://wa.me/6281319634257?text=Halo%20Jelajah%20Sumba"
+                target="_blank"
+                rel="noopener"
+                className="mt-4 inline-flex items-center gap-2 rounded-full bg-[#1f8a4c] px-4 py-2 text-xs font-bold text-white hover:bg-[#27a25b] transition"
+              >
                 💬 Hubungi via WhatsApp
               </a>
             </div>
@@ -43,8 +46,7 @@ export default function Footer() {
                   { href: "/stay", label: "🏠 Stay & Guide" },
                 ].map((item) => (
                   <li key={item.href}>
-                    <Link href={item.href}
-                      className="text-pasir/70 hover:text-pasir transition">
+                    <Link href={item.href} className="text-pasir/70 hover:text-pasir transition">
                       {item.label}
                     </Link>
                   </li>
@@ -64,10 +66,11 @@ export default function Footer() {
                   { href: "/pemandu", label: "🧭 Pemandu Lokal" },
                   { href: "/glosarium", label: "Glosarium Istilah" },
                   { href: "/etika", label: "Etika Berkunjung" },
+                  { href: "/kuliner", label: "🍽 Kuliner Lokal" },
+                  { href: "/kamus", label: "🗣 Kamus Bahasa" },
                 ].map((item) => (
                   <li key={item.href}>
-                    <Link href={item.href}
-                      className="text-pasir/70 hover:text-pasir transition">
+                    <Link href={item.href} className="text-pasir/70 hover:text-pasir transition">
                       {item.label}
                     </Link>
                   </li>
@@ -88,8 +91,7 @@ export default function Footer() {
                   { href: "/kontribusi", label: "🤝 Kontribusi" },
                 ].map((item) => (
                   <li key={item.href}>
-                    <Link href={item.href}
-                      className="text-pasir/70 hover:text-pasir transition">
+                    <Link href={item.href} className="text-pasir/70 hover:text-pasir transition">
                       {item.label}
                     </Link>
                   </li>
